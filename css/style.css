@@ -1,0 +1,253 @@
+
+/* Creamos nuestras variables, mediante :root accedemos a la ruta de css */
+:root{
+    --rojo: #E50914;
+    --fondo: #141414;
+}
+/* Para que en todos los navegadores se vea igual */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--fondo);
+    font-family: 'Open Sans', sans-serif;
+
+}
+.container{
+    width: 90%;
+    margin: auto;
+}
+
+header{
+    padding: 30px 0;
+}
+
+/* Para acceder al header del contenedor */
+header .container{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;   
+}
+
+header .logo{
+    font-family: 'Bebas Neue', cursive;
+    /* Para quitarle las negritas usamos un font-weight normal */
+    font-weight: normal; 
+    color: var(--rojo);
+    font-size: 40px;
+
+}
+header nav a{
+    color: #aaa;
+    /* text decoration para quitarle los subrayados */
+    text-decoration: none;    
+    margin-right: 20px;
+}
+
+/* El primer enlace activo, mientras que si paso el cursor sobre los otros habrá un efecto hover*/
+header nav a:hover,
+header nav a.active{
+    color:#fff;
+}
+
+/*------------- Movie Principal---------- */
+.movie-principal{
+    font-size: 16px;
+    /* Medidas relativas, de esta manera no afectará cuando juego con el reponsive*/
+    min-height: 40.62em;
+    color: #fff;
+ 
+    /* Fondo arriba de la imagen con un gradiente */
+    background: linear-gradient(rgba(0,0,0, .50) 0%, rgba(0,0,0, .50)100%), url(../img/gdDr.jpg);
+    /* Centrarla de forma vertical y horizontal */
+    background-position: center center;
+    /* Bg size cover es para asegurarme que la img abarque el 100% disponible */
+    background-size: cover;
+    margin-bottom: 3.12em;
+    display: flex;
+    align-items: end;
+
+
+
+}
+.movie-principal .container{
+    margin: 0 auto;
+    margin-bottom: 6.25em;
+}
+
+.movie-principal .title{
+    font-weight: 600;
+    font-size: 3.12em;
+    margin-bottom: 0.4em;
+}
+.movie-principal .description{
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.75em;
+    max-width: 50%;
+    margin-bottom: 1.25em;
+
+}
+.movie-principal .btn{
+    background: rgba(0,0,0, 0.5);
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.93em 1.87em;
+    color:#fff;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition:  .3s ease all;
+    font-size: 1.12em;
+
+}
+.movie-principal .btn i{
+    margin-right: 1.25em;
+}
+.movie-principal .btn:hover{
+    background: #fff;
+    color: #000;
+}
+
+/* Contenedor de Título y contorles */
+.container-title-control{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.container-title-control h3{
+    color: #fff;
+    font-size: 30px;
+}
+.container-title-control .indicadores button{
+    background: #fff;
+    height: 3px;
+    width: 10px;
+    cursor: pointer;
+    border: none;
+    margin-right: 2px;
+}
+.container-title-control .indicadores button:hover,
+.container-title-control .indicadores button.activo{
+    background: red;
+}
+
+/* Contenedor Principal y flechas */
+
+.movie-recom{
+    margin-bottom: 70px;
+}
+
+.movie-recom .container-principal{
+    display: flex;
+    align-items: center;
+    /* Importante para acomodar las flechas */
+    position: relative;
+}
+.movie-recom .container-principal .arrow-left,
+.movie-recom .container-principal .arrow-right
+{
+    position: absolute;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 40px;
+    height: 50%;
+    top: calc(50% -25%);
+    line-height: 40px;
+    width: 50px;
+    color: #fff;
+    cursor: pointer;
+    /* para asegurarme que la flecha quede arriba de los elementos el z-index */
+    z-index: 500;
+    transition: .2s ease all;
+}
+.movie-recom .container-principal .arrow-left:hover,
+.movie-recom .container-principal .arrow-right:hover{
+    background: rgba(0, 0, 0, .9);
+
+}
+.movie-recom .container-principal .arrow-left{
+    left: 0;
+}
+.movie-recom .container-principal .arrow-right{
+    right: 0;
+}
+
+/*  Carousel */
+.movie-recom .container-carousel{
+    width: 100%;
+    padding: 20px 0;
+    /* un poquito cortado por el hidden, todo lo que salga del 100% quiero que esté oculto */
+    overflow: hidden;
+    /* scroll-behavior nos va a permitir elegir el comportamiento del scroll */
+    /* Para que no sea brusco el moviento */
+    scroll-behavior: smooth;
+}
+.movie-recom .container-carousel .carousel{
+    display: flex;
+    /* Para que las imágenes queden pegadas una a la otra a la derecha */
+    flex-wrap: nowrap;
+
+
+}
+
+.movie-recom .container-carousel .carousel .movies{
+    min-width: 20%;
+    transition: .3s ease all;
+    box-shadow:5px 5px 10px rgba(0, 0, 0, .3) ;
+}
+.movie-recom .container-carousel .carousel .movies img{
+    width: 100%;
+    /* Para quitar un pequeño margen que agregan los navegadores */
+    vertical-align: top;
+
+}
+/* Cuando movies tenga la clase hover, por eso es movies.hover y no movies:hover */
+.movie-recom .container-carousel .carousel .movies.hover{
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+
+
+
+
+
+
+/* Media Queries */
+@media screen and (max-width: 800px){
+    header .logo{
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .movie-principal{
+        font-size: 14px;
+    }
+    .movie-principal .description{
+        max-width: 100%;
+    }
+
+    .movie-recom .container-carousel{
+        overflow: visible;
+
+    }
+    .movie-recom .container-carousel .carousel{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .movie-recom .indicadores,
+    .movie-recom .arrow-left,
+    .movie-recom .arrow-right{
+        display: none;
+         
+    }
+   
+}
